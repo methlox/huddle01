@@ -55,15 +55,6 @@ const App = () => {
 
   const { peers } = usePeers();
 
-  const {
-    startRecording,
-    stopRecording,
-    error,
-    data: recordingData,
-  } = useRecording();
-
-  const { setDisplayName, error: displayNameError } = useDisplayName();
-
   useEventListener("room:joined", () => {
     console.log("room:joined");
   });
@@ -93,7 +84,7 @@ const App = () => {
           {JSON.stringify(state.context.displayName)}
         </div>
         <h2 className="text-2xl">Recording Data</h2>
-        <div className="break-words">{JSON.stringify(recordingData)}</div>
+        {/* <div className="break-words">{JSON.stringify(recordingData)}</div> */}
 
         <h2 className="text-2xl">Error</h2>
         <div className="break-words text-red-500">
@@ -160,14 +151,14 @@ const App = () => {
             onChange={(e) => setDisplayNameText(e.target.value)}
             className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none mr-2"
           />
-          <Button
+          {/* <Button
             disabled={!setDisplayName.isCallable}
             onClick={() => {
               setDisplayName(displayNameText);
             }}
           >
             {`SET_DISPLAY_NAME error: ${displayNameError}`}
-          </Button>
+          </Button> */}
           <Button
             disabled={!fetchVideoStream.isCallable}
             onClick={fetchVideoStream}
@@ -237,7 +228,7 @@ const App = () => {
             STOP_PRODUCING_CAM
           </Button>
 
-          <Button
+          {/* <Button
             disabled={!startRecording.isCallable}
             onClick={() =>
               startRecording(`${window.location.href}rec/${roomId}`)
@@ -247,7 +238,7 @@ const App = () => {
           </Button>
           <Button disabled={!stopRecording.isCallable} onClick={stopRecording}>
             STOP_RECORDING
-          </Button>
+          </Button> */}
 
           <Button disabled={!leaveRoom.isCallable} onClick={leaveRoom}>
             LEAVE_ROOM
